@@ -4,7 +4,7 @@ export const SITE: Site = {
   website: "https://www.paultman.com",
   author: "Paul Maneesilasan",
   desc: "Thoughts While on a Randown Walk Toward Happiness",
-  title: "Paul's Blog",
+  title: "Paul's Thoughts",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
   postPerPage: 10,
@@ -55,5 +55,11 @@ export const SOCIALS: SocialObjects = [
     href: "https://leetcode.com/paultman/",
     linkTitle: `Paul on LeetCode`,
     active: true,
+  },
+  {
+    name: "Twitter",
+    href: "https://twitter.com/paultman",
+    linkTitle: `Paul on Twitter`,
+    active: false,
   },
 ];
