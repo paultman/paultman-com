@@ -25,7 +25,7 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
         <img
           src={ogImage}
           alt=""
-          class="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+          className="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
         />
         <div className="flex flex-col justify-between p-4 leading-normal">
           {secHeading ? <h2 {...headerProps}>{title}</h2> : <h3 {...headerProps}>{title}</h3>}
