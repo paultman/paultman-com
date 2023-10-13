@@ -16,7 +16,7 @@ title: "Who Am I?"
 
 <figure class="m-0">
 <!-- Here ![a view from the London Eye](../assets/images/fromLondonEye.jpg)<figcaption>Although I don't see it, I've been told I look like: Joseph Gordon-Levitt, or John Cusack. -->
-<img src="/assets/fromLondonEye.jpg" /> Although I don't see it, I've been told I look like: Joseph Gordon-Levitt and John Cusack.
+<img src="/assets/about_fromLondonEye.jpg" /> Although I don't see it, I've been told I look like: Joseph Gordon-Levitt and John Cusack 😛
 </figcaption>
 </figure>
 </div>
@@ -24,4 +24,4 @@ title: "Who Am I?"
 <br />
 <p class="text-center">Lesson in Data Recovery, Keep backups!</p>
 
-<img src="/assets/about-dataRecoveryGoneWrong.jpeg" />
+<img src="/assets/about_dataRecoveryGoneWrong.jpeg" />
