@@ -1,36 +1,27 @@
 ---
-layout: ../layouts/AboutLayout.astro
-title: "About"
+layout: "../layouts/AboutLayout.astro"
+title: "Who Am I?"
+# import { Image } from 'astro:assets'
+# import fromLondonEye from '../assets/images/fromLondonEye.jpg'
 ---
 
-AstroPaper is a minimal, responsive and SEO-friendly Astro blog theme. I designed and crafted this based on [my personal blog](https://satnaing.dev/blog).
+<div class="flex flex-col lg:flex-row">
+<div class="self-description">
+<p>I was born in the Baltimore, Maryland (Go Ravins!) and grew up in the DC area (Go Wizards!). At the University of Maryland, College Park (Go Terps!), I studied finance, and my after my third semester added Computer Science.</p>
 
-This theme is aimed to be accessible out of the box. Light and dark mode are supported by
-default and additional color schemes can also be configured.
+<p>Since then I’ve worked for both small and large companies, all over the world. In all that time, and though all those experiences, I’ve keep a journal and I continue to update it. Now though, rather than only writing for one, I’ll write for many, sharing insights, <s>mistakes</s> lessons learned, and my ever changing viewpoints.</p>
 
-This theme is self-documented \_ which means articles/posts in this theme can also be considered as documentations. So, see the documentation for more info.
-
-<div>
-  <img src="/assets/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
+<p>I hope this brief window into my thoughts provides you with yet another datapoint in your quest to do the same, to learn, and to grow.</p>
 </div>
 
-## Tech Stack
+<figure class="m-0">
+<!-- Here ![a view from the London Eye](../assets/images/fromLondonEye.jpg)<figcaption>Although I don't see it, I've been told I look like: Joseph Gordon-Levitt, or John Cusack. -->
+<img src="/assets/fromLondonEye.jpg" /> Although I don't see it, I've been told I look like: Joseph Gordon-Levitt and John Cusack.
+</figcaption>
+</figure>
+</div>
+<br />
+<br />
+<p class="text-center">Lesson in Data Recovery, Keep backups!</p>
 
-This theme is written in vanilla JavaScript (+ TypeScript for type checking) and a little bit of ReactJS for some interactions. TailwindCSS is used for styling; and Markdown is used for blog contents.
-
-## Features
-
-Here are certain features of this site.
-
-- fully responsive and accessible
-- SEO-friendly
-- light & dark mode
-- fuzzy search
-- super fast performance
-- draft posts
-- pagination
-- sitemap & rss feed
-- highly customizable
-
-If you like this theme, you can star/contribute to the [repo](https://github.com/satnaing/astro-paper).  
-Or you can even give any feedback via my [email](mailto:contact@satnaing.dev).
+<img src="/assets/about-dataRecoveryGoneWrong.jpeg" />
