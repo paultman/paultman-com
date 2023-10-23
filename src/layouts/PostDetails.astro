@@ -37,7 +37,7 @@ const ogUrl = new URL(ogImageUrl ?? `/posts/${slugifyStr(title)}.png`, Astro.url
     <Datetime datetime={pubDatetime} size="lg" className="my-2" /><ul class="tags-container">
       {tags.map(tag => <Tag name={slugifyStr(tag)} />)}
     </ul>
-    <img src={ogUrl} alt={title} class="w-full" />
+    <img src={ogUrl} alt={title} class="h-[540px] w-full object-cover" />
     <article id="article" role="article" class="prose mx-auto mt-8 max-w-6xl">
       <Content />
     </article>
