@@ -43,7 +43,7 @@ This guide will implement the important components of a full project. In our exa
 
 ## Initial Setup...
 
-The project will build on the baseline environment i wrote about in [Setup Visual Studio on a New Mac 2021](/setup-visual-studio-code-on-a-new-mac-2021/). Specifically follow the section titled, "Per Project Setup using ESLint + Airbnb’s Style guide and Prettier." You can find the Github repo [here](https://github.com/paultman/npm-starter-vcs).
+The project will build on the baseline environment i wrote about in [Setup Visual Studio on a New Mac 2021](/posts/setup-visual-studio-code-on-a-new-mac-in-2021/). Specifically follow the section titled, "Per Project Setup using ESLint + Airbnb’s Style guide and Prettier." You can find the Github repo [here](https://github.com/paultman/npm-starter-vcs).
 
 To use the files for your own project, clone the project into a directory with your own project name
 
