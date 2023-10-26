@@ -1,13 +1,15 @@
 ---
-title: "Google Authentication & Authorization via Oauth in 2022"
+author: Paul
 pubDatetime: 2022-04-29T15:33:05.569Z
+title: Google Authentication & Authorization via Oauth in 2022
+featured: false
 categories:
-  - "tech"
+  - tech
 tags:
   - "google"
   - "oauth2"
 ogImage: "/assets/google-authentication-authorization-via-oauth-in-2022_cover.png"
-description: "article about updates to Google's Oauth2 in 2022"
+description: "A look at how Google has changed their Authorization and Authorization library including the why, and the how of using this newer version of Google's Oauth2 library at then end of 2022"
 ---
 
 ## Overview
@@ -17,6 +19,8 @@ I feel like I've had the misfortune of re-learning this topic over and over so I
 > We are [discontinuing the Google Sign-In JavaScript Platform Library for web](https://developers.googleblog.com/2021/08/gsi-jsweb-deprecation.html). Beginning April 30th, 2022 new web applications must use the Google Identity Services library, existing web apps may continue using the Platform Library until the March 31, 2023 deprecation date. For authentication and user sign-in, use the new Google Identity Services SDKs for both [Web](https://developers.google.com/identity/gsi/web) and [Android](https://developers.google.com/identity/one-tap/android) instead.
 
 So I have to do a new implementation anyway. The newer library is called "[Sign In With Google.](https://developers.google.com/identity/gsi/web)" I guess if you've got to rename it, why not just change the order of the words. Done.
+
+## Problem
 
 Ok, why the change? First, they slightly improved security, lower friction between sign-in and sign-up, and have a more consistent experience across the web. The later likely has to do with Chrome browser sessions, and also the ability to notice that google users are already signed into Google, when they happen to been on other websites, and leverage that active session.
 
@@ -213,7 +217,7 @@ oauth2Client.on("tokens", tokens => {
 
 Since it is in a separate request callback, I don't have access to the original user id, however the tokens returned include the id_token, which is a JWT that I can decode and lookup which user the associated access_token and expiration date applies to.
 
-More information from Google:
+## More information from Google
 
 [https://developers.google.com/identity/oauth2/web/guides/how-user-authz-works](https://developers.google.com/identity/oauth2/web/guides/how-user-authz-works)
 

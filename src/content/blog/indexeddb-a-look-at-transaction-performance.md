@@ -1,19 +1,25 @@
 ---
-title: "IndexedDB, a Look Transaction Performance"
+author: Paul
 pubDatetime: 2022-08-08T15:33:05.569Z
+title: IndexedDB, a Look Transaction Performance
+featured: false
 categories:
-  - "tech"
+  - tech
 tags:
-  - "indexeddb"
-  - "javascript"
-  - "performance"
+  - indexeddb
+  - javascript
+  - performance
 ogImage: "/assets/indexeddb-a-look-at-transaction-performance_cover.png"
-description: "An investigation of client side storage, focusing on IndexedDB"
+description: "A look at how to speed up multiple client side data writes when using Indexeddb."
 ---
+
+## Background
 
 I've been working on a webapp, which will support offline access. So, after fetching data from the network, I save it to a local store on the client. In my first request, I was saving just over 600 records, and undoubtedly, the app will need to scale many times more than that.
 
-In this case, I'm saving records to [IndexedDB](https://www.paultman.com/from-localstorage-to-indexeddb/) and as a proper database, it supports transactions. That means the ability to group multiple operations, and if one fails, to roll them all back and leave the db in a pre-failed state, cleanly. That ability, while advantageous, can effect performance.
+## Problem
+
+In this case, I'm saving records to [IndexedDB](https://www.paultman.com/from-localstorage-to-indexeddb/) and as a proper database, it supports transactions. That means the ability to group multiple operations, and if one fails, to roll them all back and leave the db in a pre-failed state, cleanly. That ability, while advantageous, can negatively affect performance.
 
 One aspect which I always wondered about was how indexedDB "auto" commits transactions. Here's a [great article](https://andreas-butler.github.io/idb-transaction-commit/EXPLAINER.html#why-an-explicit-commit-function-was-not-initially-shipped) on how it works and why. Basically the agent/browser will auto-commit when there is no way for the transaction to transition from inactive to active state. This is most commonly an occurrence when there are no remaining callbacks tied to a previous get/put request.
 
@@ -21,15 +27,19 @@ You might ask why "auto" commit rather than calling commit explicitly. As the pr
 
 Knowing the overhead of transactions, and being worried about the initial batch of writes, in to the thousands, I looked for a way to write all the records at once, a putAll method. I was surprised not to find a method like that, though a sister "getAll" method existed.
 
+## Solution
+
 After some digging, I found a way to make 1 vs 1000 transaction performance is fairly similar. The improved performance is related to relaxing the "atomic" nature of transactions which I mentioned earlier. If you are certain that your operations are independent from each other, you can explicitly set your transaction object "durability" to relaxed via a property with the same name.
 
 db.transaction('customers', 'readwrite', { durability: 'relaxed' })
+
+## Results
 
 This will make a signification performance increase. Check out these results, each is processing the same number of total records:
 
 Default results with a data size of 100k, split over various batch chunks.
 
-<div class="w-80">
+<div class="w-60">
 
 | Batch Size | Time    |
 | ---------- | ------- |
@@ -43,7 +53,7 @@ In the extreme case, 1 huge transaction vs 10k smaller ones for the same amount 
 
 Here are the results with the "relaxed" durability explicitly set:
 
-<div class="w-80">
+<div class="w-60">
 
 | Batch Size | Time   |
 | ---------- | ------ |
@@ -55,7 +65,9 @@ Here are the results with the "relaxed" durability explicitly set:
 </div>
 In this case, the same 1 huge vs 10k smaller, yields a difference of only 7%.
 
-No surprise the idea to implement [getAll](https://bugs.chromium.org/p/chromium/issues/detail?id=1087927) was dropped by the Chromium developers.
+No surprise the idea to implement [putAll](https://bugs.chromium.org/p/chromium/issues/detail?id=1087927) was dropped by the Chromium developers, since due to "relaxed" durability it's unnecessary.
+
+## Sample Test Code
 
 Below is modified test code based on a script from the Chromium team.
 
