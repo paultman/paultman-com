@@ -1,40 +1,52 @@
 ---
-title: "Express project Setup 7: Client-side JS bundling, Rollup"
+author: Paul
 pubDatetime: 2022-02-10T15:33:05.569Z
+title: "Express Proj Setup 7: Client-side JS bundling, with Rollup"
+slug: express-proj-setup-7-client-side-js-bundling-with-rollup
 categories:
-  - "tech"
+  - tech
 tags:
-  - "bundling"
-  - "expressjs"
-  - "rollup"
-ogImage: "/assets/express-proj-setup-7-client-side-js-bundling-rollup_cover.png"
-description: "This post shows how to bundle and optimize website resources for distribution using Rollup"
+  - bundling
+  - expressjs
+  - rollup
+ogImage: /assets/express-proj-setup-7-client-side-js-bundling-with-rollup_cover.png
+description: This post shows how to bundle and optimize website resources for distribution using Rollup
 ---
 
 Zero to complete, a step-by-step guide to setting up an Express project from a vet
 
 This is part of an ongoing series of articles for setting up a full client/server Express based node application.
 
-- 0: Environment Setup, Eslint, Airbnb style guide, Prettier
-- 1: Project Configuration, Node env vs Project env
-- 2: Middleware, Logging: Winston & Morgan
-- 3: Data Storage: Native Mongodb
-- 4: Authentication: Middleware & Secure Cookies
-- 5: Testing: Jest and Supertest
-- 6: Code Documentation: JSDoc
-- **7: Client JS bundling, Rollup**
+- [0: Environment Setup, Eslint, Airbnb style guide, Prettier](express-proj-setup-0-intro)
+- [1: Project Configuration, Node env vs Project env](express-proj-setup-1-proj-configuration)
+- [2: Middleware, Logging: Winston & Morgan](express-proj-setup-2-logging-using-winston-and-morgan)
+- [3: Data Storage: Native Mongodb](express-proj-setup-3-data-storage-native-mongodb)
+- [4: Authentication: Middleware & Secure Cookies](express-proj-setup-4-authentication-middleware-and-secure-cookies)
+- [5: Testing: Jest and Supertest](express-proj-setup-5-testing-with-jest-and-supertest)
+- [6: Code Documentation: JSDoc](express-proj-setup-6-code-documentation-using-jsdoc)
+- [**7: Client JS bundling, Rollup**](express-proj-setup-7-client-side-js-bundling-with-rollup)
 
 Code is available at [github](https://github.com/paultman/full-express-setup) and is tagged at each stage of development.
 
-## Client JS Bundling, Rollup
+# Client JS Bundling, using Rollup
+
+## Background
 
 Ok folks, I've already written a [post](/posts/using-rollup-to-bundle-js-assets/) about javascript bundlers, and specifically Rollup. Please take a look at that post and the respective Github [repo](https://github.com/paultman/rollupExampleProj) for more information about it's benefits and how it's used in detail.
 
-In this post, I will assume you have read this [post](/posts/using-rollup-to-bundle-js-assets/) or are familiar with JS bundlers so I will get right into implementation details for our project. Start by installing rollup and a few plugins:
+In this post, I will assume you have read this [post](/posts/using-rollup-to-bundle-js-assets/) or are familiar with JS bundlers so I will get right into implementation details for our project.
 
+## Installation
+
+Start by installing Rollup and a few helper plugins:
+
+```shell
 npm i rollup rollup-plugin-copy rollup-plugin-postcss rollup-plugin-terser cssnano -D
+```
 
-That will install Rollup, a copy files helper, tenser, postcss, and cssnano plugins as dev dependencies.
+That will install Rollup, a helper to copy files, tenser, postcss, and cssnano plugins as dev dependencies.
+
+## Usage
 
 Now that we will be optimizing our client files, we will compile/copy them to a /dist directory so we will need to update references from /client to /dist. For example, in app.js when calling res.sendfile. We will also add the ability to serve static files from our webserver, assets like images, scripts, and style files. In production, it's advisable to serve these from a dedicated file server like Nginx locally, s3 in the cloud, or from a CDN like CloudFront.
 
@@ -102,7 +114,7 @@ app.init = (config, logger, db) => {
 module.exports = app;
 ```
 
-and to use Rollup, we will setup a config file:
+and to use Rollup, we will setup a config file called rollup.config.js in the app root folder:
 
 ```javascript
 import copy from "rollup-plugin-copy";

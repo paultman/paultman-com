@@ -1,5 +1,6 @@
 ---
-title: "Express Proj Setup 4: Authentication, Middleware &amp; Secure Cookies"
+title: "Express Proj Setup 4: Authentication, Middleware and Secure Cookies"
+postSlug: express-proj-setup-4-authentication-middleware-and-secure-cookies
 pubDatetime: 2022-01-22T15:33:05.569Z
 categories:
   - "tech"
@@ -7,7 +8,7 @@ tags:
   - "cookie-session"
   - "middleware"
   - "user-authentication"
-ogImage: "/assets/express-proj-setup-4-authentication-middleware-secure-cookies_cover.png"
+ogImage: "/assets/express-proj-setup-4-authentication-middleware-and-secure-cookies_cover.png"
 description: "In this article we will add another component to our middleware secure routes and have information for the currently logged in user."
 ---
 
@@ -15,18 +16,18 @@ Zero to complete, a step-by-step guide to setting up an Express project from a v
 
 This is part of an ongoing series of articles for setting up a full client/server Express based node application.
 
-- 0: Environment Setup, Eslint, Airbnb style guide, Prettier
-- 1: Project Configuration, Node env vs Project env
-- 2: Middleware, Logging: Winston & Morgan
-- 3: Data Storage: Native Mongodb
-- **4: Authentication: Middleware & Secure Cookies**
-- 5: Testing: Jest and Supertest
-- 6: Code Documentation: JsDoc
-- 7: Client JS bundling, Rollup
+- [0: Environment Setup, Eslint, Airbnb style guide, Prettier](express-proj-setup-0-intro)
+- [1: Project Configuration, Node env vs Project env](express-proj-setup-1-proj-configuration)
+- [2: Middleware, Logging: Winston & Morgan](express-proj-setup-2-logging-using-winston-and-morgan)
+- [3: Data Storage: Native Mongodb](express-proj-setup-3-data-storage-native-mongodb)
+- [**4: Authentication: Middleware & Secure Cookies**](express-proj-setup-4-authentication-middleware-and-secure-cookies)
+- [5: Testing: Jest and Supertest](express-proj-setup-5-testing-with-jest-and-supertest)
+- [6: Code Documentation: JSDoc](express-proj-setup-6-code-documentation-using-jsdoc)
+- [7: Client JS bundling, Rollup](express-proj-setup-7-client-side-js-bundling-with-rollup)
 
 Code is available at [github](https://github.com/paultman/full-express-setup) and is tagged at each stage of development.
 
-## Authentication
+## Background: Interactivity and User Accounts
 
 Up to this point, all of our work has been on setup, now we will finally write client code and get some interactivity.
 
@@ -111,6 +112,8 @@ Here's another basic html file which we will use as the target of our protected 
   </body>
 </html>
 ```
+
+## Back-end, Server-side Development
 
 Now with our UI wrapped up, lets focus on our backend. We start by adding two packages that we'll need when adding new users to our database, and when persisting login sessions on the client.
 
@@ -236,19 +239,21 @@ We also have out app initialization where we set some variables, remember we cal
 
 Finally we've added new routes for user functions. We have three "get" handlers, namely "/" for the index page, a protected page, and our logout route. We also handle posts to login and register.
 
+## Result: Protected Routes and Client State Saved
+
 With all that done, you can run the app from our package.json script:
 
-<img src="/assets/express-proj-setup-4-authentication-middleware-secure-cookies_1.png" />
+<img src="/assets/express-proj-setup-4-authentication-middleware-and-secure-cookies_1.png" />
 
 then open a we browser to localhost:3000:
 
-<img src="/assets/express-proj-setup-4-authentication-middleware-secure-cookies_2.png" />
+<img src="/assets/express-proj-setup-4-authentication-middleware-and-secure-cookies_2.png" />
 
 You will find our very plain, but functional landing page. From there, try going to the protected route and nothing happens. Instead you can try to register, and you will be redirected to the protected page, or, with that registered account, you can login, and you will go back there.
 
 Last, inspect the page storage and look for cookies. You will see one if you have logged in, and even after closing the browser, you will maintain the ability to go directly to the protected route. Try deleting it, and you will lose the ability until you login again.
 
-You now have a functioning app with both serverside and client side code. You can check the github repo for the tag v1.4 or see the delta [here](https://github.com/paultman/full-express-setup/commit/22224a623ee156fa853fb7d9292049400b04568c). In our next post we will focus on testing.
+You now have a functioning app with both serverside and client side code. You can check the github repo for the tag v1.4 or see the delta [here](https://github.com/paultman/full-express-setup/commit/22224a623ee156fa853fb7d9292049400b04568c). In our next post we will focus on [testing](/posts/express-proj-setup-5-testing-with-jest-and-supertest).
 
 ## References
 

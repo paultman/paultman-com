@@ -1,5 +1,6 @@
 ---
 title: "Express Proj Setup: 1 Proj Configuration"
+postSlug: express-proj-setup-1-proj-configuration
 pubDatetime: 2022-01-13T15:33:05.569Z
 categories:
   - "tech"
@@ -14,14 +15,14 @@ Zero to complete, a step-by-step guide to setting up an Express project from a v
 
 This is part of an ongoing series of articles for setting up a full client/server Express based node application.
 
-- 0: Environment Setup, Eslint, Airbnb style guide, Prettier
-- **1: Project Configuration, Node env vs Project env**
-- 2: Middleware, Logging: Winston & Morgan
-- 3: Data Storage: Native Mongodb
-- 4: Authentication: Middleware & Secure Cookies
-- 5: Testing: Jest and Supertest
-- 6: Code Documentation: JsDoc
-- 7: Client JS bundling, Rollup
+- [0: Environment Setup, Eslint, Airbnb style guide, Prettier](express-proj-setup-0-intro)
+- [**1: Project Configuration, Node env vs Project env**](express-proj-setup-1-proj-configuration)
+- [2: Middleware, Logging: Winston & Morgan](express-proj-setup-2-logging-using-winston-and-morgan)
+- [3: Data Storage: Native Mongodb](express-proj-setup-3-data-storage-native-mongodb)
+- [4: Authentication: Middleware & Secure Cookies](express-proj-setup-4-authentication-middleware-and-secure-cookies)
+- [5: Testing: Jest and Supertest](express-proj-setup-5-testing-with-jest-and-supertest)
+- [6: Code Documentation: JSDoc](express-proj-setup-6-code-documentation-using-jsdoc)
+- [7: Client JS bundling, Rollup](express-proj-setup-7-client-side-js-bundling-with-rollup)
 
 Code is available at [github](https://github.com/paultman/full-express-setup) and is tagged at each stage of development.
 
@@ -101,7 +102,7 @@ module.exports = config\[env\];
 
 You can find all changes since the last post [here](https://github.com/paultman/full-express-setup/compare/v1.0...v1.1) on github.
 
-In the [next article](express-proj-setup-2-logging-using-winston-amp-morgan), I'll show you a few middleware libraries to add logging to your expressjs backend system.
+In the [next article](express-proj-setup-2-logging-using-winston-and-morgan), I'll show you a few middleware libraries to add logging to your expressjs backend system.
 
 ## References
 

@@ -54,7 +54,7 @@ for example:
 ```
 
 As mentioned, your computer uses the /etc/hosts file for manually routing requests to IP addresses. In my case, u can see I've told my computer to route facebook, 9to5mac, macrumos, and cnn to my local network adapter rather than going out to the network to get the content.
-Rather then sending traffic to the loopback address (127.0.0.1), you can also send it to an inspirational website like: everydaypower.com simply replace the 127.0.0.1 with whatever website you want.
+Rather then sending traffic to the loopback address (127.0.0.1), you can also send it to an inspirational website like: [everydaypower](https://everydaypower.com) simply replace the 127.0.0.1 with whatever website you want.
 
 You can leave your hosts.free file as it is, because that's your default network configuration.
 

@@ -1,5 +1,6 @@
 ---
 title: "Express Proj Setup: 3 Data Storage, Native Mongodb"
+postSlug: express-proj-setup-3-data-storage-native-mongodb
 pubDatetime: 2022-01-17T15:33:05.569Z
 categories:
   - "tech"
@@ -14,14 +15,14 @@ Zero to complete, a step-by-step guide to setting up an Express project from a v
 
 This is part of an ongoing series of articles for setting up a full client/server Express based node application.
 
-- 0: Environment Setup, Eslint, Airbnb style guide, Prettier
-- 1: Project Configuration, Node env vs Project env
-- 2: Middleware, Logging: Winston & Morgan
-- **3: Data Storage: Native Mongodb**
-- 4: Authentication: Middleware & Secure Cookies
-- 5: Testing: Jest and Supertest
-- 6: Code Documentation: JsDoc
-- 7: Client JS bundling, Rollup
+- [0: Environment Setup, Eslint, Airbnb style guide, Prettier](express-proj-setup-0-intro)
+- [1: Project Configuration, Node env vs Project env](express-proj-setup-1-proj-configuration)
+- [2: Middleware, Logging: Winston & Morgan](express-proj-setup-2-logging-using-winston-and-morgan)
+- [**3: Data Storage: Native Mongodb**](express-proj-setup-3-data-storage-native-mongodb)
+- [4: Authentication: Middleware & Secure Cookies](express-proj-setup-4-authentication-middleware-and-secure-cookies)
+- [5: Testing: Jest and Supertest](express-proj-setup-5-testing-with-jest-and-supertest)
+- [6: Code Documentation: JSDoc](express-proj-setup-6-code-documentation-using-jsdoc)
+- [7: Client JS bundling, Rollup](express-proj-setup-7-client-side-js-bundling-with-rollup)
 
 Code is available at [github](https://github.com/paultman/full-express-setup) and is tagged at each stage of development.
 
@@ -80,4 +81,4 @@ const db = mongoClient.db(appConfig.db.name);
 
 You can see we import the mongodb driver we just installed. We then setup the url we will be using to connect, create a db client, and select the database as defined in our application file.
 
-Currently we do not do anything with our database, but in the [next step](express-proj-setup-4-authentication-middleware-amp-secure-cookies) we will add a users controller and add code to register new users and allow existing ones to login.
+Currently we do not do anything with our database, but in the [next step](express-proj-setup-4-authentication-middleware-and-secure-cookies) we will add a users controller and add code to register new users and allow existing ones to login.

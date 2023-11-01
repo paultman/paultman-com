@@ -1,5 +1,6 @@
 ---
 title: "Express Proj Setup: 0 Intro"
+postSlug: express-proj-setup-0-intro
 pubDatetime: 2021-12-24T15:33:05.569Z
 categories:
   - "tech"
@@ -20,14 +21,14 @@ Zero to complete, a step-by-step guide to setting up an Express project from a v
 
 _Benefit to the reader: After reading this article you will: understand why I'm writing a best practice guide to a common framework like Express, learn what components the guide will have, and you will setup a development environment which your will build on via the steps in upcoming posts._ At the end of the full guide you will have a fully-functional, robust, and efficient web-server.
 
-- **0: Environment Setup, Eslint, Airbnb style guide, Prettier**
-- 1: Project Configuration, Node env vs Project env
-- 2: Middleware, Logging: Winston & Morgan
-- 3: Data Storage: Native Mongodb
-- 4: Authentication: Middleware & Secure Cookies
-- 5: Testing: Jest and Supertest
-- 6: Code Documentation: JsDoc
-- 7: Client JS bundling, Rollup
+- [**0: Environment Setup, Eslint, Airbnb style guide, Prettier**](express-proj-setup-0-intro)
+- [1: Project Configuration, Node env vs Project env](express-proj-setup-1-proj-configuration)
+- [2: Middleware, Logging: Winston & Morgan](express-proj-setup-2-logging-using-winston-and-morgan)
+- [3: Data Storage: Native Mongodb](express-proj-setup-3-data-storage-native-mongodb)
+- [4: Authentication: Middleware & Secure Cookies](express-proj-setup-4-authentication-middleware-and-secure-cookies)
+- [5: Testing: Jest and Supertest](express-proj-setup-5-testing-with-jest-and-supertest)
+- [6: Code Documentation: JSDoc](express-proj-setup-6-code-documentation-using-jsdoc)
+- [7: Client JS bundling, Rollup](express-proj-setup-7-client-side-js-bundling-with-rollup)
 
 Code is available at [github](https://github.com/paultman/full-express-setup) and is tagged at each stage of development.
 
@@ -55,4 +56,4 @@ Then, cd into that directory, delete the .git directory (rm -rf .git), update th
 
 If you are going to use the Visual Studio Code editor (recommended), but sure to install the Eslint & Prettier extensions, and you'll be all set.
 
-You should now have the beginnings of your own express repo ready and can get started with the next [article](express-proj-setup-1-proj-configuration/), focused on project and environment configuration.
+You should now have the beginnings of your own express repo ready and can get started with the next [article](express-proj-setup-1-proj-configuration), focused on project and environment configuration.
