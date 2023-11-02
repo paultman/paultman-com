@@ -15,6 +15,9 @@
     "prepare": "husky install",
     "lint": "eslint ."
   },
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
     "@astrojs/check": "^0.2.0",
     "@astrojs/rss": "^3.0.0",
