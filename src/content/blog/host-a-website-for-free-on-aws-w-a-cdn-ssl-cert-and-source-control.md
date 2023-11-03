@@ -2,9 +2,9 @@
 title: "Host a Website for Free on AWS w/ a CDN, SSL Cert, and Source Control"
 pubDatetime: 2021-05-18T02:05:51Z
 categories:
-  - "aws"
   - "tech"
 tags:
+  - "aws"
   - "hosting"
   - "s3"
   - "static-website"
