@@ -5,7 +5,7 @@ export const SITE: Site = {
   author: "Paul Maneesilasan",
   desc: "Thoughts While on a Randown Walk Toward Happiness",
   title: "Paul's Thoughts",
-  ogImage: "astropaper-og.jpg",
+  ogImage: "",
   lightAndDarkMode: true,
   postPerPage: 10,
 };
