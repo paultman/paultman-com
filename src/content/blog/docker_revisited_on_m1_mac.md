@@ -1,11 +1,12 @@
 ---
 title: "Docker Revisited on M1 Mac"
-pubDatetime: 2023-12-12T15:22:00Z
+pubDatetime: 2023-12-11T15:22:00Z
 categories:
   - "tech"
 tags:
   - "m1-mac"
-  - "mac-setup"
+  - "docker"
+  - "containers"
 ogImage: "/assets/docker_revisited_on_m1_mac_cover.png"
 description: ""
 ---
