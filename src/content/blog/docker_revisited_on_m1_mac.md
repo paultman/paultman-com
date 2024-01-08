@@ -193,3 +193,74 @@ CMD ["--help"]
 By default if you run the image with `docker run [imagename]`, it will run `./utility-tool --help` as defined in ENTRYPOINT and CMD.
 
 Or the help param can be overridden using `docker run [imagename] --version`, which runs the fixed ENTRYPOINT, and the overridden CLI argument, hence `./utility-tool --verison` will be run.
+<br />
+<br />
+
+## How About Projects With Multiple Containers?
+
+In projects using Docker Compose, the approach to managing `Dockerfile`s and the `docker-compose.yml` file depends on the complexity and structure of the project. Here are common scenarios:
+
+### Multiple Dockerfiles with a Single docker-compose.yml
+
+- **Typical in Larger, Multi-Service Projects:**
+  - Projects with multiple services (e.g., web server, database, caching service) often have a separate `Dockerfile` for each service.
+  - Each service's `Dockerfile` is responsible for defining the environment for that particular component.
+- **docker-compose.yml:**
+  - The `docker-compose.yml` file orchestrates these services, linking them together.
+  - It specifies which `Dockerfile` to use for each service and how these services interact (networks, volumes, environment variables, etc.).
+- **Why This Approach?**
+  - **Modularity and Clarity:** Separate `Dockerfile`s for each service keep configurations clear and isolated.
+  - **Ease of Maintenance:** Changes to one service's environment don't affect others.
+  - **Scalability:** Easier to scale individual services.
+
+### Single Dockerfile with a docker-compose.yml
+
+- **Common in Smaller or Single-Service Projects:**
+  - Simpler projects or those with a single primary service might use just one `Dockerfile`.
+  - The `Dockerfile` sets up the necessary environment for the project.
+- **docker-compose.yml:**
+  - Handles the orchestration aspects – like port mapping, volume management, setting up networks, and linking with external services (like databases that might not need a custom Docker environment).
+- **Why This Approach?**
+  - **Simplicity:** Fewer components make a single `Dockerfile` sufficient.
+  - **Straightforward Setup:** Ideal for projects where the main complexity doesn't lie in the container setup.
+
+### Hybrid Approaches
+
+- **Combination of Both Methods:**
+  - Some projects might have multiple services but share a common base environment.
+  - They might use a base `Dockerfile` for the common setup and additional `Dockerfile`s for service-specific configurations.
+- **docker-compose.yml:**
+  - Manages how these various Docker environments interact and work together.
+
+### Best Practices
+
+- **Use What Fits the Project Needs:**
+  - The choice between single or multiple `Dockerfile`s should be based on the project's complexity and requirements.
+- **Clarity and Maintenance:**
+  - Keeping Docker-related configurations easy to read and maintain should be a priority, regardless of the number of `Dockerfile`s.
+
+In conclusion, the decision to use multiple `Dockerfile`s versus consolidating everything in the `docker-compose.yml` file is largely project-dependent. Larger, more complex projects benefit from the modularity of multiple `Dockerfile`'s, while smaller projects might find a single `Dockerfile` sufficient and more manageable.
+
+### Can I do Everything With Just docker-compose.yml?
+
+Yes you can, however it's not the best way to do things. Here is what it would look like:
+
+```docker
+version: '3'
+services:
+  app:
+    image: node:18
+    working_dir: /usr/src/app
+    command: /bin/bash -c "if [ ! -d node_modules ]; then npm install; fi && node app.js"
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+```
+
+Here we start from a node v18 container, and run a shell command to check for node_modules and install if not found, then run the node app.
+Also, for the volumes section, we aren't copying files, but actually mounting the current directory to the container, that was updates are reflected in real time.
+
+Perfect right? Not quite. The problem here is that we aren't leveraging the static/read only nature of docker images. Normally we would do the npm install once, and it would be saved to the image. But in this way, we are doing it every time we run the container. So we lose both efficiency of a single build, and predictability as the install as could use different package versions depending on repo's getting upgraded.
+
+So the take away is to use Dockerfile to build/prepare images, and then use docker-compose.yml to orchestrate them.
