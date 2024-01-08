@@ -137,3 +137,58 @@ Here the most common commands I use.
 # show all modified files in container
   docker diff [CONTAINER_NAME]
 ```
+
+### Update to Clear up Similar Commands
+
+Recently I looked at Docker again and noticed two sets of commands that seemingly had the same capabilities, so I was confused why have both.
+
+#### COPY vs ADD
+
+Both have the ability to copy local files to the Docker container, however the ADD command adds the capability to 1) copy from a network source, 2) unpack/extract archives/compressed files.
+
+I was surprise to learn that ADD came first, and COPY was added later. Infact, unless you specifically use the uncompress functionality, it's recommended to use COPY. Even when you need remote file access, it's recommended to use RUN with wget or curl in the docker container to download remote files.
+
+From my research, it seems that ADD can lead to unpredictable behavior, and is not recommended unless you need to copy a compressed file.
+
+#### ENTRYPOINT vs CMD
+
+Basically use CMD for default behavior, which can be overridden if you pass arguments when running the container from the CLI.
+For example, suppose you have a container with a python scripts that takes an argument and prints it.
+
+```docker
+FROM python:3.8
+COPY . /app
+WORKDIR /app
+CMD ["python", "script.py", "Hello, Docker!"]
+```
+
+If you run it with `docker run [image]`, it will print "Hello, Docker!".
+
+However if you run it with
+`docker run [image] python script.py "Hello, World!`, it will print `Hello, World!`.
+
+On the other hand, if you want a fixed command to be run everytime you run a container, use ENTRYPOINT. Bear in mind that any command line params will be appended to the end of the ENTRYPOINT command.
+
+For example:
+
+```docker
+FROM node:14
+COPY . /app
+WORKDIR /app
+ENTRYPOINT ["node", "app.js"]
+```
+
+If you run it with `docker run [image]`, it will always run `node app.js`.
+
+It's common to combine both ENTRYPOINT and CMD to set a fixed executable command, with default arguments. The defaults can be overwridden as we've shown ealier, but the ENTRYPOINT is fixed.
+
+```docker
+FROM ubuntu:20.04
+COPY . /app
+WORKDIR /app
+ENTRYPOINT ["./utility-tool"]
+CMD ["--help"]
+```
+
+By default it will run the image with `docker run [imagename]` and it will run `./utility-tool --help` as defined in ENTRYPOINT and CMD.
+or the help param can be overridden with `./utility-tool --version` which runs the fixed ENTRYPOINT, and an overridden CLI argument.
