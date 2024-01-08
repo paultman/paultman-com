@@ -190,6 +190,6 @@ ENTRYPOINT ["./utility-tool"]
 CMD ["--help"]
 ```
 
-By default if you run the image with `docker run [imagename]` and it will run `./utility-tool --help` as defined in ENTRYPOINT and CMD.
+By default if you run the image with `docker run [imagename]`, it will run `./utility-tool --help` as defined in ENTRYPOINT and CMD.
 
-Or the help param can be overridden with `docker run [imagename] --version` which runs the fixed ENTRYPOINT, and an overridden CLI argument, hence `./utility-tool --verison`.
+Or the help param can be overridden using `docker run [imagename] --version`, which runs the fixed ENTRYPOINT, and the overridden CLI argument, hence `./utility-tool --verison` will be run.
